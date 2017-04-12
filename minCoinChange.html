@@ -1,0 +1,45 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+<style>
+
+</style>
+<title>无标题文档</title>
+<script>
+window.onload = function()
+{
+  //贪心算法解决最少找零问题
+  function MinCoinChange(coins)
+  {
+      var coin = coins; //硬币面额
+	  
+	  this.makeChange = function(amount)
+	  {
+	     var change = []; 
+		 var total = 0;
+		 for(var i=coins.length;i>=0;i--)
+		 {
+		   var coin = coins[i];
+		   while(total + coin <= amount)
+		   {
+		      change.push(coin);
+			  total += coin;
+		   }
+		 }
+		 
+		 return change;
+	  }
+  }
+  
+  //测试数据
+  var minCoin1 = new MinCoinChange([1,5,10,25]);
+  alert(minCoin1.makeChange(36));
+  
+  var minCoin1 = new MinCoinChange([1,5,10,25]);
+  alert(minCoin1.makeChange(13));
+};
+</script>
+<body>
+
+</body>
+</html>
