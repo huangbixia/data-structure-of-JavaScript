@@ -97,16 +97,51 @@
 	//交集
 	this.intersection = function(otherset)
 	{
+		var intersectionSet = new Set();
 		
+		var values = this.values();
+		for(var i=0;i<values.length;i++)
+		{
+			if(otherset.has(values[i]))
+			{
+				intersectionSet.add(values[i]);
+			}
+		}
+		return intersectionSet;
 	};
 	//差集
 	this.difference = function(otherset)
 	{
+		var differenceSet = new Set();
 		
+		var values = this.values();
+		for(var i=0;i<values.length;i++)
+		{
+			if(!otherset.has(values[i]))
+			{
+				differenceSet.add(values[i]);
+			}
+		}
+		return differenceSet;
 	};
 	//子集
 	this.subset = function(otherset)
 	{
-		
+		if(this.size()>otherset.size())
+		{
+			return false;
+		}
+		else
+		{
+			var values = this.values();
+			for(var i=0;i<values.length;i++)
+			{
+				if(!otherset.has(values[i]))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 	};
 };
